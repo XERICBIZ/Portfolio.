@@ -32,7 +32,7 @@ export default function ExperienceSection() {
         transition={{ duration: 0.7 }}
       >
         <div className="card-header">
-          <span className="card-header-label">04 · Milestones</span>
+          <span className="card-header-label">02 · Milestones</span>
           <span className="card-header-num">Achievements &amp; Education</span>
         </div>
 
