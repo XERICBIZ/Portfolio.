@@ -5,9 +5,9 @@ const fadeUp = (delay = 0) => ({
   hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1, y: 0,
-    transition: { delay, duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay, duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   },
-});
+} as any);
 
 export default function HeroSection() {
   return (

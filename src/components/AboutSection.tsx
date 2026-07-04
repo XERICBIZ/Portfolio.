@@ -2,11 +2,6 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import MetaBalls from './MetaBalls';
 
-const fadeUp = (delay = 0) => ({
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { delay, duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-});
-
 export default function AboutSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });

@@ -247,7 +247,9 @@ function Band({
         </RigidBody>
       </group>
       <mesh ref={band}>
+        {/* @ts-expect-error - meshLineGeometry is dynamically added by extend() */}
         <meshLineGeometry />
+        {/* @ts-expect-error - meshLineMaterial is dynamically added by extend() */}
         <meshLineMaterial
           color="white"
           depthTest={false}
