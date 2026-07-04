@@ -1,0 +1,143 @@
+/* Layout Frame */
+.menu-container {
+  position: relative;
+  width: 100%;
+  height: 140px; /* Reduced height to make the box smaller */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* LAYER 1: Fluid Physics Core (White liquid for dark theme) */
+.liquid-engine {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: url('#black-white-goo');
+  pointer-events: none;
+}
+
+.liquid-mass {
+  position: absolute;
+  background: #ffffff; /* Solid White */
+  /* Slow, graceful transition when returning to center */
+  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.menu-container:hover .liquid-mass {
+  /* Snappy, springy transition when exploding outwards */
+  transition: transform 1.2s cubic-bezier(0.34, 1.6, 0.4, 1);
+}
+
+/* Stretched Pill Dimensions */
+.fluid-pill {
+  width: 180px; /* Normal size for sub-pills */
+  height: 60px;
+  border-radius: 30px; 
+}
+
+.fluid-pill.center-node {
+  width: 320px; /* Much longer ONLY for My Socials */
+}
+
+
+.typography-engine {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.social-link {
+  position: absolute;
+  width: 180px; /* Matches sub-pill width */
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000; /* Black text */
+  text-decoration: none;
+  font-family: var(--display);
+  font-size: 16px; /* Increased text size */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.85);
+  /* Slow, graceful transition when returning to center */
+  transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease-out;
+}
+
+.menu-container:hover .social-link {
+  /* Snappy, springy transition when exploding outwards */
+  transition: transform 1.2s cubic-bezier(0.34, 1.6, 0.4, 1), opacity 0.3s ease-in;
+}
+
+.social-link.center-node {
+  width: 320px; /* Matches long center pill */
+  font-size: 18px; /* Larger text for My Socials */
+}
+
+.social-link:hover {
+  color: #555555; /* Default hover for GitHub and X */
+}
+.social-link.insta:hover {
+  color: #e1306c; /* Orangish pink for Instagram */
+}
+.social-link.discord:hover {
+  color: #5865f2; /* Dark purple for Discord */
+}
+
+.center-node {
+  z-index: 10;
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.center-node .text-default { position: absolute; opacity: 1; transition: opacity 0.3s ease; }
+.center-node .text-hover   { position: absolute; opacity: 0; transition: opacity 0.3s ease; }
+
+/* --- ACTIONS --- */
+
+.menu-container:hover .center-node .text-default { opacity: 0; }
+.menu-container:hover .center-node .text-hover   { opacity: 1; }
+.menu-container:hover .center-node { color: #000000; }
+.menu-container:hover .center-node:hover { color: #0a66c2; /* Blue for LinkedIn */ }
+
+.menu-container:hover .social-link {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Widened spread to create large gaps between pills */
+.menu-container:hover .insta    { transform: translate(-520px, 0px); }
+.menu-container:hover .github   { transform: translate(-280px, 0px); }
+.menu-container:hover .x        { transform: translate(280px, 0px); }
+.menu-container:hover .discord  { transform: translate(520px, 0px); }
+
+
+.github, .x { transition-delay: 0.05s; }
+.insta, .discord { transition-delay: 0.1s; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .menu-container:hover .insta    { transform: translate(-180px, -40px); }
+  .menu-container:hover .github   { transform: translate(-90px, 40px); }
+  .menu-container:hover .x        { transform: translate(90px, 40px); }
+  .menu-container:hover .discord  { transform: translate(180px, -40px); }
+  
+  .fluid-pill, .social-link {
+    width: 160px;
+    height: 40px;
+    font-size: 11px;
+  }
+}
